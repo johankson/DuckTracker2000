@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:DuckTracker2000" x:Class="DuckTracker2000.MainPage">
+    <StackLayout Padding="20,40">
+       
+        <Button Text="Notify me" x:Name="NotifyButton" />
+        
+        <Grid x:Name="NotificationUI"
+              HeightRequest="400" 
+              BackgroundColor="Black"
+              IsVisible="false">
+            
+            <StackLayout Padding="5" Margin="5" BackgroundColor="Silver">
+                <Label Text="NOTIFICATION" FontSize="Large" FontAttributes="Bold" />
+                <Label x:Name="NotificationText" />
+                <Image Source="http://res.publicdomainfiles.com/pdf_view/134/13971340213458.jpg" />
+            </StackLayout>
+        </Grid>
+        
+    </StackLayout>
+</ContentPage>
