@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:DuckTracker2000" x:Class="DuckTracker2000.MainPage">
-    <StackLayout Padding="20,40">
-       
-        <Button Text="Notify me" x:Name="NotifyButton" />
+    <Grid>
         
+        <!-- The visible UI -->
+        <StackLayout Padding="20,40">
+       
+            <!-- Some entry point to do logic -->
+            <Button Text="Notify me" x:Name="NotifyButton" FontSize="Large" />
+            
+            <BoxView BackgroundColor="Black" HeightRequest="2" />
+            
+            <!-- The pan stuff -->
+            <Label Text="Please pan me" Margin="0,20" />
+            <Image x:Name="DuckImage"
+                   Source="https://cdn.shopify.com/s/files/1/0008/3532/products/duck-square_1200x.jpg?v=1328514366" />
+            
+        </StackLayout>
+        
+         <!-- The notification UI -->
         <Grid x:Name="NotificationUI"
               HeightRequest="400" 
               BackgroundColor="Black"
               IsVisible="false">
             
-            <StackLayout Padding="5" Margin="5" BackgroundColor="Silver">
+            <StackLayout Padding="5" Margin="5" BackgroundColor="Aqua">
                 <Label Text="NOTIFICATION" FontSize="Large" FontAttributes="Bold" />
                 <Label x:Name="NotificationText" />
                 <Image Source="http://res.publicdomainfiles.com/pdf_view/134/13971340213458.jpg" />
             </StackLayout>
         </Grid>
-        
-    </StackLayout>
+    </Grid>
+    
 </ContentPage>

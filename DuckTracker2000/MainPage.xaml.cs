@@ -20,6 +20,7 @@ namespace DuckTracker2000
 
             NotifyButton.Clicked += NotifyButton_Clicked;
 
+            // Add a swipe gesture recognizer for the Notification UI
             var swipeGestureRecognizer = new SwipeGestureRecognizer()
             {
                 Direction = SwipeDirection.Down
@@ -27,6 +28,26 @@ namespace DuckTracker2000
 
             swipeGestureRecognizer.Swiped += SwipeGestureRecognizer_Swiped;
             NotificationUI.GestureRecognizers.Add(swipeGestureRecognizer);
+
+            // Add a pan gesture recognizer for the Image
+            var panGestureRecognizer = new PanGestureRecognizer();
+            panGestureRecognizer.PanUpdated += (s, e) =>
+            {
+                switch (e.StatusType)
+                {
+                    case GestureStatus.Running:
+                        DuckImage.TranslationX = e.TotalX;
+                        DuckImage.TranslationY = e.TotalY;
+                        break;
+
+                    case GestureStatus.Completed:
+                        DuckImage.TranslateTo(0, 0, 250, Easing.CubicOut);
+                        break;
+                }
+            };
+           
+
+            DuckImage.GestureRecognizers.Add(panGestureRecognizer);
         }
 
         private async void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
